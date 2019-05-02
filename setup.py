@@ -32,7 +32,8 @@ setup(
         'rtree==0.8.3',
 
         # utils
-        'affine'
+        'affine',
+        'matplotlib'
     ],
     classifiers=[
         "Development Status :: 4 - Beta",
