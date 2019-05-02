@@ -21,7 +21,15 @@ from shapely import ops
 from rtree.index import Index as RTreeIndex
 from scipy import ndimage
 from scipy import interpolate
-from itertools import izip
+
+
+try:
+    # Python 2
+    from itertools import izip
+except ImportError:
+    # Python 3
+    izip = zip
+
 import matplotlib.pyplot as plt
 from matplotlib import colors
 from matplotlib.ticker import LogFormatter
