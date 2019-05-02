@@ -72,7 +72,6 @@ def read_color_table(color_file, cmap_name='newcmap'):
     df.loc[:, 'value'] = value_norm
 
     levels_colors = zip(df.value, zip(df.r/255, df.g/255, df.b/255))
-    print levels_colors
     return LinearSegmentedColormap.from_list(cmap_name,
                                              levels_colors,
                                              gamma=1.0)
