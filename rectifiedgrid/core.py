@@ -357,16 +357,17 @@ class RectifiedGrid(SubRectifiedGrid, np.ma.core.MaskedArray):
         if not self.proj:
             return crs
         for item in self.proj.srs.split():
-            k, v = item.split('=')
-            try:
-                v = int(v)
-            except ValueError:
-                pass
-            if v == 'True':
-                v = True
-            elif v == 'False':
-                v = False
-            crs[k.replace('+', '')] = v
+            if '=' in item:
+                k, v = item.split('=')
+                try:
+                    v = int(v)
+                except ValueError:
+                    pass
+                if v == 'True':
+                    v = True
+                elif v == 'False':
+                    v = False
+                crs[k.replace('+', '')] = v
         return crs
 
     def write_raster(self, filepath, dtype=None, driver='GTiff', nodata=None, compress=None):
